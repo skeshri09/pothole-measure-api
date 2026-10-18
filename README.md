@@ -23,9 +23,9 @@ focal_px = (focal_length_mm / 10) * image_width_px / sensor_width_cm
 real_cm  = pixels * camera_height_cm / focal_px
 ```
 
-Defaults: camera height 90 cm, focal length 3.6 mm, sensor width 0.24 cm.
+Defaults: camera height 90 cm, focal length 3.6 mm, sensor width 2.4 cm (the values from my dissertation).
 
-> **Calibration note:** estimated sizes scale linearly with `sensor_width_cm`. My dissertation notebook used a sensor width of 2.4 cm, which gives sizes ten times larger than the 0.24 cm default used here. Always set the sensor width from your own camera's datasheet.
+> **Calibration note:** estimated sizes scale linearly with `sensor_width_cm`. The defaults match the dissertation notebook; set the sensor width from your own camera's datasheet for real use.
 
 ## Limitations
 
@@ -51,10 +51,10 @@ curl -X POST http://localhost:8000/api/measure \
 
 ```json
 {
-  "width_cm": 15.23,
-  "length_cm": 9.38,
-  "area_cm2": 142.82,
-  "focal_length_px": 768.0,
+  "width_cm": 152.34,
+  "length_cm": 93.75,
+  "area_cm2": 14282.23,
+  "focal_length_px": 76.8,
   "pixel_width": 130.0,
   "pixel_height": 80.0,
   "notes": ["Assumes the camera points straight down at a flat road from the given height.",

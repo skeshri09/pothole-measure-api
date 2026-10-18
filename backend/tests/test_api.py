@@ -19,23 +19,23 @@ def test_health():
 
 def test_defaults_are_the_documented_constants():
     r = client.get("/api/defaults")
-    assert r.json() == {"camera_height_cm": 90.0, "focal_length_mm": 3.6, "sensor_width_cm": 0.24}
+    assert r.json() == {"camera_height_cm": 90.0, "focal_length_mm": 3.6, "sensor_width_cm": 2.4}
 
 
 def test_measure_with_defaults():
     r = client.post("/api/measure", json=VALID)
     assert r.status_code == 200
     body = r.json()
-    assert body["width_cm"] == pytest.approx(130 * 90 / 768, abs=0.01)
-    assert body["length_cm"] == pytest.approx(80 * 90 / 768, abs=0.01)
+    assert body["width_cm"] == pytest.approx(130 * 90 / 76.8, abs=0.01)
+    assert body["length_cm"] == pytest.approx(80 * 90 / 76.8, abs=0.01)
     assert body["area_cm2"] == pytest.approx(body["width_cm"] * body["length_cm"], rel=0.01)
-    assert body["focal_length_px"] == pytest.approx(768.0)
+    assert body["focal_length_px"] == pytest.approx(76.8)
     assert body["notes"]
 
 
 def test_measure_uses_custom_camera_settings():
     r = client.post("/api/measure", json={**VALID, "camera_height_cm": 180})
-    assert r.json()["width_cm"] == pytest.approx(2 * 130 * 90 / 768, abs=0.01)
+    assert r.json()["width_cm"] == pytest.approx(2 * 130 * 90 / 76.8, abs=0.01)
 
 
 @pytest.mark.parametrize(

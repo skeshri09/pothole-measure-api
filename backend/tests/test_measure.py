@@ -19,14 +19,14 @@ def reference_notebook_version(pred_bbox, img_size=512,
 
 
 def test_focal_length_in_pixels_for_default_camera():
-    # 0.36 cm * 512 px / 0.24 cm = 768 px
-    assert focal_length_px(3.6, 512, 0.24) == pytest.approx(768.0)
+    # 0.36 cm * 512 px / 2.4 cm = 76.8 px
+    assert focal_length_px(3.6, 512, 2.4) == pytest.approx(76.8)
 
 
 def test_known_value():
     d = estimate_dimensions((100, 100, 200, 150), image_width_px=512)
-    assert d.width_cm == pytest.approx(100 * 90 / 768)   # 11.71875
-    assert d.length_cm == pytest.approx(50 * 90 / 768)   # 5.859375
+    assert d.width_cm == pytest.approx(100 * 90 / 76.8)   # 117.1875
+    assert d.length_cm == pytest.approx(50 * 90 / 76.8)   # 58.59375
     assert d.area_cm2 == pytest.approx(d.width_cm * d.length_cm)
 
 

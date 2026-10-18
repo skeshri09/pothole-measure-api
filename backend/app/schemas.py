@@ -42,7 +42,7 @@ class MeasureRequest(BaseModel):
                     "image_height_px": 512,
                     "camera_height_cm": 90,
                     "focal_length_mm": 3.6,
-                    "sensor_width_cm": 0.24,
+                    "sensor_width_cm": 2.4,
                 }
             ]
         }

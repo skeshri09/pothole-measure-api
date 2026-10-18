@@ -12,13 +12,12 @@ known height.
 
 from dataclasses import dataclass
 
-# Defaults. Camera height (90 cm) and focal length (3.6 mm) are the values used in the dissertation.
-# The dissertation notebook and report used a sensor width of 2.4 cm; this API defaults to 0.24 cm
-# (a 2.4 mm sensor). Estimated sizes scale linearly with sensor width, so the two settings differ by
-# a factor of 10. Set sensor_width_cm from your own camera's datasheet.
+# Defaults. Camera height (90 cm), focal length (3.6 mm) and sensor width (2.4 cm) are the values used in
+# the dissertation notebook and report. Estimated sizes scale linearly with sensor width, so set
+# sensor_width_cm from your own camera's datasheet.
 DEFAULT_CAMERA_HEIGHT_CM = 90.0
 DEFAULT_FOCAL_LENGTH_MM = 3.6
-DEFAULT_SENSOR_WIDTH_CM = 0.24
+DEFAULT_SENSOR_WIDTH_CM = 2.4
 
 
 @dataclass(frozen=True)

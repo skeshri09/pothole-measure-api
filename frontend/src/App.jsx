@@ -3,7 +3,7 @@ import { fetchDefaults, measure } from "./lib/api.js";
 import { boxFromDrag, isMeasurable, toImageBox } from "./lib/geometry.js";
 import { SAMPLE_IMAGE_URL } from "./lib/sample.js";
 
-const FALLBACK = { camera_height_cm: 90, focal_length_mm: 3.6, sensor_width_cm: 0.24 };
+const FALLBACK = { camera_height_cm: 90, focal_length_mm: 3.6, sensor_width_cm: 2.4 };
 
 function Field({ id, label, unit, value, min, max, step, onChange }) {
   return (
@@ -157,7 +157,7 @@ export default function App() {
                  onChange={set("camera_height_cm")} />
           <Field id="focal" label="Focal length" unit="mm" value={settings.focal_length_mm} min={1} max={20} step={0.1}
                  onChange={set("focal_length_mm")} />
-          <Field id="sensor" label="Sensor width" unit="cm" value={settings.sensor_width_cm} min={0.05} max={2} step={0.01}
+          <Field id="sensor" label="Sensor width" unit="cm" value={settings.sensor_width_cm} min={0.1} max={10} step={0.1}
                  onChange={set("sensor_width_cm")} />
           <button type="button" className="link" onClick={() => setSettings(defaults)}>Reset to defaults</button>
 
